@@ -1,3 +1,5 @@
+#pragma once
+
 #include "inputValidation.h"
 #include "main.h"
 #include "member.h"
