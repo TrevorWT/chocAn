@@ -1,0 +1,4 @@
+id,name,street,city,state,zip,suspended
+000000001,Trevor,10026 sw 28th ave,Portland,OR,97219,no
+000000002,Joe,1234 fake street,Nowhere,WA,98665,no
+000000003,Joe,Smith,Lame,MN,66556,no
