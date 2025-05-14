@@ -4,6 +4,7 @@ Member::Member() {}
 
 Member::Member(const string &id, const string &name)
     : memID(id), memName(name), suspended(false) {}
+
 string Member::getID() const { return memID; }
 
 string Member::getName() const { return memName; }
@@ -31,6 +32,3 @@ void Member::setState(const string &state) { memState = state; }
 void Member::setZip(const string &zip) { memZip = zip; }
 
 void Member::setSuspended(bool status) { suspended = status; }
-
-
-

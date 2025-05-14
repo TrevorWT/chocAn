@@ -126,9 +126,62 @@ void changeMemberAccess(map<string, Member> &members) {
     it->second.setSuspended(false);
     cout << "Member " << id << " active.\n";
   } else {
-  it->second.setSuspended(true);
-  cout << "Member " << id << " suspended.\n";
+    it->second.setSuspended(true);
+    cout << "Member " << id << " suspended.\n";
   }
+  rebuildCSV(members);
+}
+
+void updateMemberInfo(map<string, Member> &members, int choice, Member &m) {
+  if (choice == 1) {
+    string name = getValidatedInput(2, 25, "letters", false, "Name");
+    m.setName(name);
+    cout << "Name updated.\n";
+  } else if (choice == 2) {
+    string street = getValidatedInput(2, 25, "all", false, "Street");
+    m.setStreet(street);
+    cout << "Street updated.\n";
+  } else if (choice == 3) {
+    string city = getValidatedInput(2, 14, "letters", false, "City");
+    m.setCity(city);
+    cout << "City updated.\n";
+  } else if (choice == 4) {
+    string state = getValidatedInput(2, 2, "letters", true, "State");
+    m.setState(state);
+    cout << "State updated.\n";
+  } else if (choice == 5) {
+    string zip = getValidatedInput(5, 5, "numbers", false, "Zip code");
+    m.setZip(zip);
+    cout << "ZIP updated.\n";
+  } else if (choice == 6) {
+    string name = getValidatedInput(2, 25, "letters", false, "Name");
+    string street = getValidatedInput(2, 25, "all", false, "Street");
+    string city = getValidatedInput(2, 14, "letters", false, "City");
+    string state = getValidatedInput(2, 2, "letters", true, "State");
+    string zip = getValidatedInput(5, 5, "numbers", false, "Zip code");
+
+    m.setName(name);
+    m.setStreet(street);
+    m.setCity(city);
+    m.setState(state);
+    m.setZip(zip);
+
+    cout << "All fields updated.\n";
+  }
+  // persist changes to CSV
+  rebuildCSV(members);
+}
+
+void deleteMember(map<string, Member> &members) {
+  cout << "Delete Member\n";
+  string id = getValidatedInput(9, 9, "numbers", false, "ID");
+  auto it = members.find(id);
+  if (it == members.end()) {
+    cout << "Member not found\n";
+    return;
+  }
+  members.erase(it);
+  cout << "Member deleted successfully.\n";
   rebuildCSV(members);
 }
 
